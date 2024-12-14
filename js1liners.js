@@ -56,7 +56,7 @@ async function getLocationByIpOrInt(ipAddress) {
 
     // HTML
     <input type="text" name="addr" value="" id="addr" placeholder="type ip address here...." />
-    <button type="button" id="submitButton" ><i class="fa fa-2x fa-arrow-right" aria-hidden="true"></i></button>
+    <button type="button" id="submitButton" >Submit</button>
 
     */
 
