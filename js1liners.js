@@ -25,6 +25,13 @@ const hasitem = (array, item) => array.includes(item);
 //break array into chunk sizes
 const chunk = (arr, size) => Array.apply(null, {length: Math.ceil(arr.length/size)}).map((v, i) => arr.slice(i*size, i*size+size));
 
+//global ipv6
+const randomGlobalIPv6 = () => [(0x2000 + Math.floor(Math.random()*0x2000)).toString(16).padStart(4,"0"), ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
+
+//link local ipv6
+const randomLinkLocalIPv6 = () => ["fe80","0000","0000","0000",...Array.from({length:4},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
+
+
 //IP Address Locator ====================================================================================================================================================
 
 //ipaddress to decimal converter
@@ -80,4 +87,5 @@ async function getLocationByIpOrInt(ipAddress) {
             
         });
     });
+
 
