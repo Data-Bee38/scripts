@@ -32,7 +32,7 @@ const randomGlobalIPv6 = () => [(0x2000 + Math.floor(Math.random()*0x2000)).toSt
 const randomLinkLocalIPv6 = () => ["fe80","0000","0000","0000",...Array.from({length:4},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
 //private ipv6
-const randomULA = () => ["fd"+Math.floor(Math.random()*256).toString(16).padStart(2,"0")+Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"), ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
+const randomULA = () => [`fd${Math.floor(Math.random()*256).toString(16).padStart(2,"0")}`, ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
 
 
@@ -91,6 +91,7 @@ async function getLocationByIpOrInt(ipAddress) {
             
         });
     });
+
 
 
 
