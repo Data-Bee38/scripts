@@ -39,9 +39,9 @@ const randomMulticastIPv6 = () => ["ff"+Math.floor(Math.random()*16).toString(16
 
 //1	interface-local          ex) ff71:f308:0a98:59b2:98f7:b771:33ca:289a 
 //2	link-local               ex) fff2:d2b9:e14f:89b4:3fab:4fa8:c8a3:9725
-//5	site-local
-//8	organization-local
-//e	global
+//5	site-local               ex) ffb5:5472:b8e8:cd74:d673:dd2f:da55:a13a
+//8	organization-local       ex) ffe8:6824:be5b:8a4c:bc49:b2a5:4cc4:0557
+//e	global                   ex) ffae:61e9:6cf0:c426:4cfc:df61:e3ed:0ae6
 
 
 
@@ -102,6 +102,7 @@ async function getLocationByIpOrInt(ipAddress) {
             
         });
     });
+
 
 
 
