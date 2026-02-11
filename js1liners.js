@@ -34,6 +34,17 @@ const randomLinkLocalIPv6 = () => ["fe80","0000","0000","0000",...Array.from({le
 //private ipv6
 const randomULA = () => [`fd${Math.floor(Math.random()*256).toString(16).padStart(2,"0")}`, ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
+//multicast
+const randomMulticastIPv6 = () => ["ff"+Math.floor(Math.random()*16).toString(16)+["1","2","5","8","e"][Math.floor(Math.random()*5)], ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
+
+//1	interface-local          ex) ff71:f308:0a98:59b2:98f7:b771:33ca:289a 
+//2	link-local               ex) fff2:d2b9:e14f:89b4:3fab:4fa8:c8a3:9725
+//5	site-local
+//8	organization-local
+//e	global
+
+
+
 
 
 //IP Address Locator ====================================================================================================================================================
@@ -91,6 +102,7 @@ async function getLocationByIpOrInt(ipAddress) {
             
         });
     });
+
 
 
 
