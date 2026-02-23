@@ -27,8 +27,7 @@ const chunk = (arr, size) => Array.apply(null, {length: Math.ceil(arr.length/siz
 
 //crypto
 const sha256 = async s => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)))].map(b => b.toString(16).padStart(2,"0")).join("");
-sha256("hello world").then(console.log);
-// => b94d27b9934d3e08a52e52d7da7dabfade...
+sha256("hello world").then(console.log); // => b94d27b9934d3e08a52e52d7da7dabfade...
 
 //global ipv6
 const randomGlobalIPv6 = () => [(0x2000 + Math.floor(Math.random()*0x2000)).toString(16).padStart(4,"0"), ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
@@ -107,6 +106,7 @@ async function getLocationByIpOrInt(ipAddress) {
             
         });
     });
+
 
 
 
