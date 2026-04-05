@@ -29,19 +29,19 @@ const chunk = (arr, size) => Array.apply(null, {length: Math.ceil(arr.length/siz
 const sha256 = async s => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)))].map(b => b.toString(16).padStart(2,"0")).join("");
 sha256("hello world").then(console.log); // => b94d27b9934d3e08a52e52d7da7dabfade...
 
-//global ipv6
+//global ipv6 unicast
 //Required: 001xxxxx (first 3 bits are fixed)
 //0011xxxx = 3
 //0010xxxx = 2
 //If it starts with 2 or 3 → Global
 const randomGlobalIPv6 = () => [(0x2000 + Math.floor(Math.random()*0x2000)).toString(16).padStart(4,"0"), ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
-//link local ipv6
+//link local ipv6 unicast
 //If it starts with FE80 → Link Local
 const randomLinkLocalIPv6 = () => ["fe80","0000","0000","0000",...Array.from({length:4},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
-//private ipv6
-const randomULA = () => [`fd${Math.floor(Math.random()*256).toString(16).padStart(2,"0")}`, ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
+//unique local unicast (private ipv6)
+const randomULA = () => `fd${[...Array(5)].map(()=>Math.floor(Math.random()*256).toString(16).padStart(2,"0")).join("").match(/.{1,4}/g).join(":")}::1`;
 
 //multicast
 //If it starts with FF → Multicast
