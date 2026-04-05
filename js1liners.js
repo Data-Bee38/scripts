@@ -30,6 +30,10 @@ const sha256 = async s => [...new Uint8Array(await crypto.subtle.digest("SHA-256
 sha256("hello world").then(console.log); // => b94d27b9934d3e08a52e52d7da7dabfade...
 
 //global ipv6
+//Required: 001xxxxx (first 3 bits are fixed)
+//0011xxxx = 3
+//0010xxxx = 2
+//If it starts with 2 or 3 → Global
 const randomGlobalIPv6 = () => [(0x2000 + Math.floor(Math.random()*0x2000)).toString(16).padStart(4,"0"), ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
 //link local ipv6
