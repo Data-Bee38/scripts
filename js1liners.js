@@ -37,12 +37,14 @@ sha256("hello world").then(console.log); // => b94d27b9934d3e08a52e52d7da7dabfad
 const randomGlobalIPv6 = () => [(0x2000 + Math.floor(Math.random()*0x2000)).toString(16).padStart(4,"0"), ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
 //link local ipv6
+//If it starts with FE80 → Link Local
 const randomLinkLocalIPv6 = () => ["fe80","0000","0000","0000",...Array.from({length:4},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
 //private ipv6
 const randomULA = () => [`fd${Math.floor(Math.random()*256).toString(16).padStart(2,"0")}`, ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
 //multicast
+//If it starts with FF → Multicast
 const randomMulticastIPv6 = () => ["ff"+Math.floor(Math.random()*16).toString(16)+["1","2","5","8","e"][Math.floor(Math.random()*5)], ...Array.from({length:7},()=>Math.floor(Math.random()*0x10000).toString(16).padStart(4,"0"))].join(":");
 
 //1	interface-local          ex) ff71:f308:0a98:59b2:98f7:b771:33ca:289a 
