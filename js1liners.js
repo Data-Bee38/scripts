@@ -1,7 +1,7 @@
 // Convert object to an array
 const objToArray = obj => Object.values(obj);
 
-// Convert an array to an object
+// Converts an array of objects to a new object by their key
 const arrayToObject = (arr, keyField) => Object.fromEntries(arr.map(item => [item[keyField], item]));
 
 // Generates a random number between min and max
